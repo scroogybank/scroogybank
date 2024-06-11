@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('features', function (Blueprint $table) {
-            $table->id();
+            $table->ulid()->primary();
             $table->string('name');
             $table->string('scope');
             $table->text('value');
