@@ -17,6 +17,11 @@ return new class extends Migration
             $table->bigInteger('amount');
             $table->string('currency', 3);
             $table->text('note')->nullable();
+            $table->timestamp('registered_at');
+            // "Cleared" means it was a downloaded transaction from my bank.
+            // "Reconciled" means I have reconciled my statement (paper or pdf) against my account.
+            // Typically transactions will go from "blank" (none) to "Cleared" to "Reconciled" over the course of a month.
+            $table->enum('status', ['cleared', 'reconciled'])->nullable();
             $table->timestamps();
 
             $table->foreignUlid('user_ulid')

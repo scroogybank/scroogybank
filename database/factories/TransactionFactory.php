@@ -26,6 +26,9 @@ class TransactionFactory extends Factory
                 new Currency(fake()->randomKey(config('money.currencies')))
             ),
             'note' => fake()->optional()->text(),
+            'registered_at' => fake()->dateTime(),
+            'status' => fake()->optional()->randomElement(['cleared', 'reconciled']),
+
             'user_ulid' => User::factory(),
         ];
     }
