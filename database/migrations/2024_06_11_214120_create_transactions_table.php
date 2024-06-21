@@ -22,6 +22,7 @@ return new class extends Migration
             // "Reconciled" means I have reconciled my statement (paper or pdf) against my account.
             // Typically transactions will go from "blank" (none) to "Cleared" to "Reconciled" over the course of a month.
             $table->enum('status', ['cleared', 'reconciled'])->nullable();
+            $table->string('external_id', 255)->nullable();
             $table->timestamps();
 
             $table->foreignUlid('user_ulid')

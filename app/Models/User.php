@@ -51,8 +51,33 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    /**
+     * A user has many transactions.
+     *
+     * @return HasMany
+     */
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    /**
+     * A user has many categories.
+     *
+     * @return HasMany
+     */
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    /**
+     * A user has many tags.
+     *
+     * @return HasMany
+     */
+    public function tags(): HasMany
+    {
+        return $this->hasMany(Tag::class);
     }
 }
