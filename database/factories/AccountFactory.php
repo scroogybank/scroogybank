@@ -19,12 +19,12 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->slug,
+            'name' => fake()->words(3, true),
             'description' => fake()->optional()->sentence,
             'icon' => fake()->optional()->imageUrl,
             'main_currency' => fake()->randomKey(config('money.currencies')),
-            'original_balance' => fake()->optional()->numberBetween(0, 10_000),
-            'archived' => fake()->optional()->boolean(10),
+            'original_balance' => fake()->numberBetween(0, 10_000),
+            'archived' => fake()->boolean(10),
             'opening_date' => fake()->date(),
 
             'user_ulid' => User::factory(),

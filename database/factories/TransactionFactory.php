@@ -30,6 +30,7 @@ class TransactionFactory extends Factory
             'note' => fake()->optional()->text(),
             'registered_at' => fake()->dateTime(),
             'status' => fake()->optional()->randomElement(['cleared', 'reconciled']),
+            'external_id' => fake()->optional()->uuid(),
 
             'user_ulid' => User::factory(),
             'account_ulid' => Account::factory(),
