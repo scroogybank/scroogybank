@@ -20,13 +20,16 @@ return new class extends Migration
             $table->boolean('visible')->default(true);
             $table->timestamps();
 
+            $table->foreignUlid('user_ulid')
+                ->constrained('users', 'ulid')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+        });
+
+        Schema::table('categories', function (Blueprint $table) {
             $table->foreignUlid('main_category_ulid')
                 ->nullable()
                 ->constrained('categories', 'ulid')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreignUlid('user_ulid')
-                ->constrained('users', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
         });
@@ -37,6 +40,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('main_category_ulid');
+        });
         Schema::dropIfExists('categories');
     }
 };

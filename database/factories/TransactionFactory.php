@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Akaunting\Money\Currency;
 use Akaunting\Money\Money;
+use App\Models\Account;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -30,6 +32,8 @@ class TransactionFactory extends Factory
             'status' => fake()->optional()->randomElement(['cleared', 'reconciled']),
 
             'user_ulid' => User::factory(),
+            'account_ulid' => Account::factory(),
+            'category_ulid' => Category::factory(),
         ];
     }
 }

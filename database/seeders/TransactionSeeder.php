@@ -15,6 +15,7 @@ class TransactionSeeder extends Seeder
     {
         Transaction::factory(10)
             ->recycle(User::factory()->create())
+            ->hasTags(fake()->numberBetween(0, 5))
             ->create();
     }
 }

@@ -29,13 +29,6 @@ class Category extends Model
     ];
 
     /**
-     * The relationships that should always be loaded.
-     *
-     * @var string[]
-     */
-    protected $with = ['mainCategory', 'subCategories'];
-
-    /**
      * A category belongs to a user.
      *
      * @return BelongsTo
