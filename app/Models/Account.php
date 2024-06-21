@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Account extends Model
 {
@@ -46,5 +47,15 @@ class Account extends Model
     public function accountGroup(): BelongsTo
     {
         return $this->belongsTo(AccountGroup::class, 'account_group_ulid', 'ulid');
+    }
+
+    /**
+     * An account has many transactions.
+     *
+     * @return HasMany
+     */
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'account_ulid', 'ulid');
     }
 }

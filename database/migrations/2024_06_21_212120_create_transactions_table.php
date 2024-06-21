@@ -29,6 +29,14 @@ return new class extends Migration
                 ->constrained('users', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+            $table->foreignUlid('account_ulid')
+                ->constrained('accounts', 'ulid')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignUlid('category_ulid')
+                ->constrained('categories', 'ulid')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
     }
 

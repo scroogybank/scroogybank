@@ -64,4 +64,14 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'main_category_ulid', 'ulid');
     }
+
+    /**
+     * A category has many transactions.
+     *
+     * @return HasMany
+     */
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'category_ulid', 'ulid');
+    }
 }
