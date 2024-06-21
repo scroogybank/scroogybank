@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class TransactionSeeder extends Seeder
@@ -12,6 +13,8 @@ class TransactionSeeder extends Seeder
      */
     public function run(): void
     {
-        Transaction::factory(10)->create();
+        Transaction::factory(10)
+            ->recycle(User::factory()->create())
+            ->create();
     }
 }

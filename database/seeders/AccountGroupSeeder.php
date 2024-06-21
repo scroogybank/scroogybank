@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\AccountGroup;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class AccountGroupSeeder extends Seeder
@@ -12,6 +13,8 @@ class AccountGroupSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        AccountGroup::factory(10)
+            ->recycle(User::factory()->create())
+            ->create();
     }
 }
