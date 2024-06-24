@@ -72,12 +72,12 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * A user has many tags.
+     * A user has many labels.
      *
      * @return HasMany
      */
-    public function tags(): HasMany
+    public function labels(): HasMany
     {
-        return $this->hasMany(Tag::class);
+        return $this->hasMany(Label::class);
     }
 }

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tag_transaction', function (Blueprint $table) {
-            $table->foreignUlid('tag_ulid')
-                ->constrained('tags', 'ulid')
+        Schema::create('label_transaction', function (Blueprint $table) {
+            $table->foreignUlid('label_ulid')
+                ->constrained('labels', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->foreignUlid('transaction_ulid')
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tag_transaction');
+        Schema::dropIfExists('label_transaction');
     }
 };

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Tag extends Model
+class Label extends Model
 {
     use HasFactory, HasUlids;
 
@@ -25,7 +25,7 @@ class Tag extends Model
     ];
 
     /**
-     * A tag belongs to a user.
+     * A label belongs to a user.
      *
      * @return BelongsTo
      */
@@ -35,13 +35,13 @@ class Tag extends Model
     }
 
     /**
-     * A tag may belong many transactions.
+     * A label may belong many transactions.
      *
      * @return BelongsToMany
      */
     public function transactions(): BelongsToMany
     {
-        return $this->belongsToMany(Transaction::class, 'tag_transaction', 'tag_ulid', 'transaction_ulid')
+        return $this->belongsToMany(Transaction::class, 'label_transaction', 'label_ulid', 'transaction_ulid')
             ->withTimestamps();
     }
 }

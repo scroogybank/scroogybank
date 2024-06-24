@@ -110,13 +110,13 @@ class Transaction extends Model
     }
 
     /**
-     * A transaction may belong to many tags.
+     * A transaction may belong to many labels.
      *
      * @return BelongsToMany
      */
-    public function tags(): BelongsToMany
+    public function labels(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'tag_transaction', 'transaction_ulid', 'tag_ulid')
+        return $this->belongsToMany(Label::class, 'label_transaction', 'transaction_ulid', 'label_ulid')
             ->withTimestamps();
     }
 

@@ -17,13 +17,13 @@ class TransactionSeeder extends Seeder
         // Create 10 normal transactions
         Transaction::factory(10)
             ->recycle(User::factory()->create())
-            ->hasTags(fake()->numberBetween(0, 5))
+            ->hasLabels(fake()->numberBetween(0, 5))
             ->create();
 
         // Create 5 transfers
         Transaction::factory(5)
             ->recycle(User::factory()->create())
-            ->hasTags(fake()->numberBetween(0, 5))
+            ->hasLabels(fake()->numberBetween(0, 5))
             ->hasTransferFrom(1, function (array $attributes, Transaction $transaction) {
                 return ['amount' => $transaction->amount->multiply(-1)];
             })
@@ -36,7 +36,7 @@ class TransactionSeeder extends Seeder
                 ['collection_ulid' => new Ulid()],
             )
             ->recycle(User::factory()->create())
-            ->hasTags(fake()->numberBetween(0, 5))
+            ->hasLabels(fake()->numberBetween(0, 5))
             ->create();
     }
 }

@@ -116,6 +116,21 @@ namespace App\Models{
 /**
  * 
  *
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transactions
+ * @property-read int|null $transactions_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\LabelFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Label newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Label newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Label query()
+ */
+	class Label extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property string $ulid
  * @property string $name
  * @property string $guard_name
@@ -175,31 +190,6 @@ namespace App\Models{
  * 
  *
  * @property string $ulid
- * @property string $name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string $user_ulid
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transactions
- * @property-read int|null $transactions_count
- * @property-read \App\Models\User $user
- * @method static \Database\Factories\TagFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUlid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUserUlid($value)
- */
-	class Tag extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property string $ulid
  * @property string|null $collection_ulid
  * @property string $name
  * @property mixed $amount
@@ -220,8 +210,8 @@ namespace App\Models{
  * @property-read int|null $collection_transactions_count
  * @property-read mixed $is_collection
  * @property-read mixed $is_transfer
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
- * @property-read int|null $tags_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Label> $labels
+ * @property-read int|null $labels_count
  * @property-read Transaction|null $transferFrom
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\TransactionFactory factory($count = null, $state = [])
@@ -261,14 +251,14 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Label> $labels
+ * @property-read int|null $labels_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Permission> $permissions
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $roles
  * @property-read int|null $roles_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
- * @property-read int|null $tags_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transactions
  * @property-read int|null $transactions_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
