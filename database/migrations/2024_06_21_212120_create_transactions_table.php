@@ -13,28 +13,37 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->ulid()->primary();
+            $table->ulid('collection_ulid')->nullable();
             $table->string('name', 255);
             $table->bigInteger('amount');
             $table->string('currency', 3);
             $table->text('note')->nullable();
             $table->timestamp('registered_at');
-            // "Cleared" means it was a downloaded transaction from my bank.
-            // "Reconciled" means I have reconciled my statement (paper or pdf) against my account.
-            // Typically transactions will go from "blank" (none) to "Cleared" to "Reconciled" over the course of a month.
-            $table->enum('status', ['cleared', 'reconciled'])->nullable();
+            $table->enum('status', ['cleared', 'reconciled'])
+                ->nullable()
+                ->comment("\"Cleared\" means it was a downloaded transaction from my bank. \"Reconciled\" means I have reconciled my statement (paper or pdf) against my account. Typically transactions will go from \"blank\" (none) to \"Cleared\" to \"Reconciled\" over the course of a month.");
             $table->string('external_id', 255)->nullable();
             $table->timestamps();
 
             $table->foreignUlid('user_ulid')
+                ->comment('The user that performed this transaction.')
                 ->constrained('users', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->foreignUlid('account_ulid')
+                ->comment('The account this transaction belongs to.')
                 ->constrained('accounts', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->foreignUlid('category_ulid')
+                ->comment('The category this transaction belongs to.')
                 ->constrained('categories', 'ulid')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+            $table->foreignUlid('transfer_transaction_ulid')
+                ->nullable()
+                ->comment('If this is a transfer, this is the other transaction\'s ulid')
+                ->constrained('transactions', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
         });
