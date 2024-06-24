@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Arr;
 
 class Transaction extends Model
@@ -99,13 +100,13 @@ class Transaction extends Model
     }
 
     /**
-     * A transaction may be connected to another transaction if it's a transfer.
+     * A transfer has an associated transaction that is the source of the transfer.
      *
-     * @return BelongsTo
+     * @return HasOne
      */
-    public function transferTransaction(): BelongsTo
+    public function transferFrom(): HasOne
     {
-        return $this->belongsTo(self::class, 'transfer_transaction_ulid', 'ulid');
+        return $this->hasOne(self::class, 'transfer_from_ulid', 'ulid');
     }
 
     /**

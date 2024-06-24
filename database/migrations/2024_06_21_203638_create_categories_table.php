@@ -26,6 +26,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
         });
 
+        // Must be separate due to foreign key constraints
         Schema::table('categories', function (Blueprint $table) {
             $table->foreignUlid('main_category_ulid')
                 ->nullable()

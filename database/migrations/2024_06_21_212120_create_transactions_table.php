@@ -40,9 +40,13 @@ return new class extends Migration
                 ->constrained('categories', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->foreignUlid('transfer_transaction_ulid')
+        });
+
+        // Must be separate due to foreign key constraints
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->foreignUlid('transfer_from_ulid')
                 ->nullable()
-                ->comment('If this is a transfer, this is the other transaction\'s ulid')
+                ->comment('A transfer has an associated transaction that is the source of the transfer.')
                 ->constrained('transactions', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
