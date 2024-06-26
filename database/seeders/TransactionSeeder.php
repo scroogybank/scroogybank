@@ -29,6 +29,14 @@ class TransactionSeeder extends Seeder
             })
             ->create();
 
+        Transaction::where('transfer_from_ulid', '!=', null)
+            ->get()
+            ->each(
+                function (Transaction $transaction) {
+                    Transaction::find($transaction->transfer_from_ulid)->update(['transfer_from_ulid' => $transaction->ulid]);
+                }
+            );
+
         // Create 2 collections, 4 with one ulid and 4 with another
         Transaction::factory(8)
             ->sequence(
