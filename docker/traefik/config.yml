@@ -1,0 +1,4 @@
+tls:
+  certificates:
+    - certFile: /tools/certs/traefik.development+4.pem
+      keyFile: /tools/certs/traefik.development+4-key.pem
