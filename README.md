@@ -8,3 +8,7 @@
 -   [IDE helper](https://github.com/barryvdh/laravel-ide-helper) PHPDoc for Laravel (only in dev).
 -   [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar) Debugbar for Laravel (only in dev).
 -   [Laravel Money](https://github.com/akaunting/laravel-money) Currency formatting and conversion package for Laravel.
+
+## References
+
+- Theme toggler thanks to [jh3yy](https://x.com/intent/follow?screen_name=jh3yy) [Codepen here](https://codepen.io/jh3y/pen/LYgjpYZ)
