@@ -40,6 +40,12 @@ return new class extends Migration
                 ->constrained('categories', 'ulid')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+            $table->foreignUlid('store_ulid')
+                ->comment('The store that received or performed the transaction, if there\'s one.')
+                ->nullable()
+                ->constrained('stores', 'ulid')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
 
         // Must be separate due to foreign key constraints

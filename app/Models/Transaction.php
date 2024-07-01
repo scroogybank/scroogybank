@@ -100,6 +100,16 @@ class Transaction extends Model
     }
 
     /**
+     * A transaction may have an associated store.
+     *
+     * @return BelongsTo
+     */
+    public function store(): BelongsTo
+    {
+        return $this->belongsTo(Store::class, 'store_ulid', 'ulid');
+    }
+
+    /**
      * A transfer has an associated transaction that is the source of the transfer.
      *
      * @return HasOne

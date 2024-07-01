@@ -80,4 +80,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Label::class);
     }
+
+    /**
+     * A user has many stores.
+     *
+     * @return HasMany
+     */
+    public function stores(): HasMany
+    {
+        return $this->hasMany(Store::class);
+    }
 }

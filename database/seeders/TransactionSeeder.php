@@ -20,6 +20,13 @@ class TransactionSeeder extends Seeder
             ->hasLabels(fake()->numberBetween(0, 5))
             ->create();
 
+        // Create 2 transactions without store
+        Transaction::factory(2)
+            ->recycle(User::factory()->create())
+            ->hasLabels(fake()->numberBetween(0, 5))
+            ->withoutStore()
+            ->create();
+
         // Create 5 transfers
         Transaction::factory(5)
             ->recycle(User::factory()->create())

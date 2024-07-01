@@ -6,6 +6,7 @@ use Akaunting\Money\Currency;
 use Akaunting\Money\Money;
 use App\Models\Account;
 use App\Models\Category;
+use App\Models\Store;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -35,6 +36,19 @@ class TransactionFactory extends Factory
             'user_ulid' => User::factory(),
             'account_ulid' => Account::factory(),
             'category_ulid' => Category::factory(),
+            'store_ulid' => Store::factory(),
         ];
+    }
+
+    /**
+     * Create a transaction not assigned to a store.
+     *
+     * @return Factory
+     */
+    public function withoutStore(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'store_ulid' => null,
+        ]);
     }
 }
