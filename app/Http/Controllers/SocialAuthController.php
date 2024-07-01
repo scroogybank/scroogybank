@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SocialUserService;
+use App\Services\SocialUserService;
 use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

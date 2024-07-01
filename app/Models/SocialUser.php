@@ -10,7 +10,23 @@ class SocialUser extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_ulid', 'provider_user_id', 'provider'];
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_ulid',
+        'provider_user_id',
+        'provider',
+    ];
 
     /**
      * A social user belongs to a user.

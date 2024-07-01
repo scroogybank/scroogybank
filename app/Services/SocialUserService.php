@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Services;
 
+use App\Models\SocialUser;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
