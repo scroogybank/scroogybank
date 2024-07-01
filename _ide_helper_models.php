@@ -116,13 +116,23 @@ namespace App\Models{
 /**
  * 
  *
+ * @property string $ulid
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $user_ulid
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transactions
  * @property-read int|null $transactions_count
- * @property-read \App\Models\User|null $user
+ * @property-read \App\Models\User $user
  * @method static \Database\Factories\LabelFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Label newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Label newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Label query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Label whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Label whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Label whereUlid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Label whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Label whereUserUlid($value)
  */
 	class Label extends \Eloquent {}
 }
@@ -189,6 +199,43 @@ namespace App\Models{
 /**
  * 
  *
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialUser newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialUser newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialUser query()
+ */
+	class SocialUser extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property string $ulid
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $user_ulid
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transactions
+ * @property-read int|null $transactions_count
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\StoreFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Store newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Store newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Store query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Store whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Store whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Store whereUlid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Store whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Store whereUserUlid($value)
+ */
+	class Store extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property string $ulid
  * @property string|null $collection_ulid
  * @property string $name
@@ -203,6 +250,7 @@ namespace App\Models{
  * @property string $user_ulid The user that performed this transaction.
  * @property string $account_ulid The account this transaction belongs to.
  * @property string $category_ulid The category this transaction belongs to.
+ * @property string|null $store_ulid The store that received or performed the transaction, if there's one.
  * @property string|null $transfer_from_ulid A transfer has an associated transaction that is the source of the transfer.
  * @property-read \App\Models\Account $account
  * @property-read \App\Models\Category $category
@@ -212,6 +260,7 @@ namespace App\Models{
  * @property-read mixed $is_transfer
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Label> $labels
  * @property-read int|null $labels_count
+ * @property-read \App\Models\Store|null $store
  * @property-read Transaction|null $transferFrom
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\TransactionFactory factory($count = null, $state = [])
@@ -229,6 +278,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereNote($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereRegisteredAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereStoreUlid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereTransferFromUlid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereUlid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereUpdatedAt($value)
@@ -259,6 +309,8 @@ namespace App\Models{
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $roles
  * @property-read int|null $roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Store> $stores
+ * @property-read int|null $stores_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transactions
  * @property-read int|null $transactions_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
