@@ -10,11 +10,15 @@ $logout = function (Logout $logout) {
 
 ?>
 
-<nav x-data="{ notificationsOpen: false, notificationsCount: 0 }" class="navbar sticky top-0 bg-base-100 z-10 shadow-md">
+<nav x-data="{ notificationsOpen: false, notificationsCount: 0 }"
+    class="navbar sticky top-0 bg-base-100 z-10 shadow-md">
     <!-- Menu toogle for mobile view or small screen -->
     <div class="flex-1">
         <label for="left-sidebar-drawer" class="btn btn-primary drawer-button lg:hidden">
-        <Bars3Icon class="h-5 inline-block w-5"/></label>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </label>
         <h1 class="text-2xl font-semibold ml-2">{{ $pageTitle ?? '' }}</h1>
     </div>
 
@@ -22,17 +26,8 @@ $logout = function (Logout $logout) {
         <!-- Notification icon -->
         <button class="btn btn-ghost ml-4 btn-circle" @click="notificationsOpen = !notificationsOpen">
             <div class="indicator">
-                 <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                 </svg>
                 <template x-if="notificationsCount > 0">
                     <span x-text="notificationsCount" class="indicator-item badge badge-secondary badge-sm"></span>

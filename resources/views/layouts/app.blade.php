@@ -15,8 +15,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div className="drawer lg:drawer-open">
-            <input id="left-sidebar-drawer" type="checkbox" class="drawer-toggle" />
+        <div x-data class="drawer lg:drawer-open">
+            <input @close-sidebar.window="$el.click()" id="left-sidebar-drawer" type="checkbox" class="drawer-toggle" />
             <livewire:layout.sidebar />
 
             <div class="drawer-content flex flex-col">
@@ -34,6 +34,7 @@
                 <!-- Page Content -->
                 <main class="flex-1 overflow-y-auto md:pt-4 pt-4 px-6 bg-base-200">
                     {{ $slot }}
+                    <div class="h-16"></div>
                 </main>
             </div>
         </div>
