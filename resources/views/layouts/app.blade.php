@@ -20,16 +20,7 @@
             <livewire:layout.sidebar />
 
             <div class="drawer-content flex flex-col">
-                <livewire:layout.navigation />
-
-                <!-- Page Heading -->
-                @if (isset($header))
-                    <header class="bg-white shadow">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            {{ $header }}
-                        </div>
-                    </header>
-                @endif
+                <livewire:layout.navigation :header="$header?->toHtml()" />
 
                 <!-- Page Content -->
                 <main class="flex-1 overflow-y-auto md:pt-4 pt-4 px-6 bg-base-200">

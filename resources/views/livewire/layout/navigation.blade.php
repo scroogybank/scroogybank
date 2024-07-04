@@ -1,6 +1,9 @@
 <?php
 
 use App\Livewire\Actions\Logout;
+use function Livewire\Volt\{state};
+
+state(['header' => '']);
 
 $logout = function (Logout $logout) {
     $logout();
@@ -19,7 +22,7 @@ $logout = function (Logout $logout) {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
         </label>
-        <h1 class="text-2xl font-semibold ml-2">{{ $pageTitle ?? '' }}</h1>
+        <h1 class="text-2xl font-semibold ml-2">{!! $header !!}</h1>
     </div>
 
     <div class="flex-none">
