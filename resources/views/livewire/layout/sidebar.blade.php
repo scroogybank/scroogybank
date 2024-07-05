@@ -12,7 +12,7 @@
 
         <li class="mb-2 font-semibold text-xl">
             <a href="{{ route('dashboard') }}" wire:navigate>
-                <img class="mask mask-squircle w-10" src="" alt="Logo"/>Money
+                <img class="mask mask-squircle w-10" src="{{ Vite::asset('resources/images/logo.png') }}" alt="Logo"/>Money
             </a>
         </li>
         <li>
