@@ -4,7 +4,10 @@ namespace App\Models;
 
 use App\Casts\MoneyCast;
 use App\Enums\TransactionStatus;
+use Carbon\CarbonImmutable;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -139,5 +142,20 @@ class Transaction extends Model
     {
         return $this->hasMany(self::class, 'collection_ulid', 'ulid')
             ->where('ulid', '!=', $this->ulid);
+    }
+
+    /**
+     * Retrieve all transactions for current user given a month.
+     *
+     * @param CarbonImmutable $date
+     *
+     * @return Collection
+     *
+     * @throws BindingResolutionException
+     */
+    public static function getCurrentMonthTransactions(CarbonImmutable $date): Collection
+    {
+        return self::where('user_ulid', '=', auth()->id())
+            ->whereBetween('registered_at', [$date->startOfMonth(), $date->endOfMonth()])->get();
     }
 }

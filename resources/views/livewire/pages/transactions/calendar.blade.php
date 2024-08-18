@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Transaction;
 use Illuminate\Support\Carbon;
 use function Livewire\Volt\layout;
 use function Livewire\Volt\{computed, state};
@@ -20,8 +21,7 @@ state([
         "col-start-6 ",
         "col-start-7 ",
     ],
-    // TODO: get current month transactions from database
-    'transactions' => fn () => []
+    'transactions' => fn () => Transaction::getCurrentMonthTransactions((clone $this->firstDayOfMonth)->toImmutable()),
 ]);
 
 $allDaysInMonth = computed(function(): array {
@@ -39,9 +39,15 @@ $allDaysInMonth = computed(function(): array {
 $changeMonth = function(int $addMonth): void {
     if ($addMonth === 0) {
         $this->firstDayOfMonth = Carbon::now()->startOfMonth();
+        $this->transactions = Transaction::getCurrentMonthTransactions((clone $this->firstDayOfMonth)->toImmutable());
+
+        // Reset computed property
+        unset($this->allDaysInMonth);
+
         return;
     }
     $this->firstDayOfMonth = $this->firstDayOfMonth->addMonth($addMonth);
+    $this->transactions = Transaction::getCurrentMonthTransactions((clone $this->firstDayOfMonth)->toImmutable());
 
     // Reset computed property
     unset($this->allDaysInMonth);
