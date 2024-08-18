@@ -7,6 +7,7 @@ use App\Http\Controllers\LabelController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
 Route::redirect('/', 'dashboard');
 
@@ -29,4 +30,6 @@ Route::middleware(['auth', 'verified'])->group(function() {
         'stores' => StoreController::class,
         'transactions' => TransactionController::class,
     ]);
+    Volt::route('calendar', 'pages.transactions.calendar')
+        ->name('calendar');
 });
