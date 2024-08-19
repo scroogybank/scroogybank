@@ -1,0 +1,28 @@
+parameters:
+  universalObjectCratesClasses:
+    - Illuminate\Database\Eloquent\Model
+  # TODO: slowly remove these parameters and fix the issues found.
+  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    # TODO: slowly remove these exceptions and fix the issues found.
+    - '#Dynamic call to static method#' # all the Laravel ORM things depend on this.
+    - '#Control structures using switch should not be used.#' # switch is fine in some cases.
+    - '#with no value type specified in iterable type array#' # remove this rule when all other issues are solved.
+    - '#has no value type specified in iterable type array#' # remove this rule when all other issues are solved.
+    - '#is not allowed to extend#'
+    - '#switch is forbidden to use#'
+    - '#is neither abstract nor final#'
+    - '#on left side of \?\?\= always exists and is not nullable#'
+    - '#has a nullable return type declaration#' # perhaps throw errors instead?
+    - '#with a nullable type declaration#' # decide what action should be if param is null.
+    - '#with null as default value#'
+  paths:
+    - ./app
+    - ./database
+    - ./routes
+    - ./config
+    - ./bootstrap/app.php
+
+  # The level 8 is the highest level. original was 5
+  # 7 is more than enough, higher just leaves NULL things.
+  level: 7
