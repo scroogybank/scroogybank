@@ -1,9 +1,28 @@
 {
-    "name": "laravel/laravel",
+    "name": "akyrey/money",
+    "description": "Personal finance management system.",
+    "keywords": [
+        "finance",
+        "management",
+        "financial",
+        "money",
+        "budget",
+        "bills",
+        "administration",
+        "personal finance",
+        "laravel",
+        "framework"
+    ],
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
     "license": "MIT",
+    "readme": "README.md",
+    "authors": [
+        {
+            "name": "Dario Vogogna",
+            "email": "stein.dario@gmail.com",
+            "role": "developer"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "akaunting/laravel-money": "^5.2",
