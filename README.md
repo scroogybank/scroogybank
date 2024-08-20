@@ -1,4 +1,4 @@
-# Money
+# ScroogyBank
 
 ## Libraries
 
