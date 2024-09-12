@@ -45,6 +45,7 @@ class Transaction extends Model
         return [
             'amount' => MoneyCast::class,
             'status' => TransactionStatus::class,
+            'registered_at' => 'datetime',
         ];
     }
 
@@ -149,13 +150,14 @@ class Transaction extends Model
      *
      * @param CarbonImmutable $date
      *
-     * @return Collection
+     * @return Collection<int, Transaction>
      *
      * @throws BindingResolutionException
      */
     public static function getCurrentMonthTransactions(CarbonImmutable $date): Collection
     {
-        return self::where('user_ulid', '=', auth()->id())
-            ->whereBetween('registered_at', [$date->startOfMonth(), $date->endOfMonth()])->get();
+        return static::where('user_ulid', '=', auth()->id())
+            ->whereBetween('registered_at', [$date->startOfMonth(), $date->endOfMonth()])
+            ->get();
     }
 }
