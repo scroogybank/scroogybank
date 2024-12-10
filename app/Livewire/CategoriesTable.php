@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CategoriesTable extends Table
 {
-
     /**
      * @return Builder<Category>
      */

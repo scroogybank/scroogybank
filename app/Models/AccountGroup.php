@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class AccountGroup extends Model
 {
     use HasFactory, HasUlids;
-
     protected $primaryKey = 'ulid';
     protected $keyType = 'string';
 

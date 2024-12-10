@@ -17,7 +17,7 @@ class SocialUserService
      * Users from different providers with the same email address are considered the same user.
      *
      * @param ProviderUser $providerUser
-     * @param string $provider
+     * @param string       $provider
      *
      * @return User|Model|mixed|null|object
      */

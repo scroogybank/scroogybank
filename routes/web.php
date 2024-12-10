@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AccountGroupController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LabelController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TransactionController;
@@ -21,7 +20,7 @@ Route::view('profile', 'profile')
 
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth', 'verified'])->group(function() {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::resources([
         'accounts' => AccountController::class,
         'account_groups' => AccountGroupController::class,

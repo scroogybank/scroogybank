@@ -20,7 +20,6 @@ use Illuminate\Support\Arr;
 class Transaction extends Model
 {
     use HasFactory, HasUlids;
-
     protected $primaryKey = 'ulid';
     protected $keyType = 'string';
 

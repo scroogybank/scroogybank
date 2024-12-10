@@ -14,14 +14,14 @@ class MoneyCast implements CastsAttributes
     /**
      * Cast the given value.
      *
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
      */
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
         $amount = Arr::get($attributes, 'amount');
         $currency = Arr::get($attributes, 'currency');
 
-        if (!is_int($amount) || !is_string($currency) || !key_exists($currency, Currency::getCurrencies())) {
+        if (!is_int($amount) || !is_string($currency) || !array_key_exists($currency, Currency::getCurrencies())) {
             throw new UnexpectedValueException;
         }
 
@@ -31,7 +31,7 @@ class MoneyCast implements CastsAttributes
     /**
      * Prepare the given value for storage.
      *
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $attributes
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
     {

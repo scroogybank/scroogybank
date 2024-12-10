@@ -24,8 +24,8 @@ class SocialAuthController extends Controller
      * Retrieve user info from provider.
      *
      * @param SocialUserService $service
-     * @param string $provider
-     * @param Request $request
+     * @param string            $provider
+     * @param Request           $request
      *
      * @return RedirectResponse
      */
@@ -38,6 +38,7 @@ class SocialAuthController extends Controller
         }
 
         $request->session()->flash('danger', trans('login_fail'));
+
         return redirect()->route('login');
     }
 }

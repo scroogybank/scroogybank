@@ -9,7 +9,6 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
 class Permission extends SpatiePermission
 {
     use HasFactory, HasUlids;
-
     protected $primaryKey = 'ulid';
     protected $keyType = 'string';
 }

@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Label extends Model
 {
     use HasFactory, HasUlids;
-
     protected $primaryKey = 'ulid';
     protected $keyType = 'string';
 

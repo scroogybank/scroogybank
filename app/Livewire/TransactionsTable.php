@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class TransactionsTable extends Table
 {
-
     /**
      * @return Builder<Transaction>
      */

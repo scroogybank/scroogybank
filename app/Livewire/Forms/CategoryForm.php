@@ -13,7 +13,7 @@ class CategoryForm extends Form
     public string $kind = '';
     public string $name = '';
     public string $color = '';
-    public bool $visible = FALSE;
+    public bool $visible = false;
 
     public function rules(): array
     {

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamp('registered_at');
             $table->enum('status', ['cleared', 'reconciled'])
                 ->nullable()
-                ->comment("\"Cleared\" means it was a downloaded transaction from my bank. \"Reconciled\" means I have reconciled my statement (paper or pdf) against my account. Typically transactions will go from \"blank\" (none) to \"Cleared\" to \"Reconciled\" over the course of a month.");
+                ->comment('"Cleared" means it was a downloaded transaction from my bank. "Reconciled" means I have reconciled my statement (paper or pdf) against my account. Typically transactions will go from "blank" (none) to "Cleared" to "Reconciled" over the course of a month.');
             $table->string('external_id', 255)->nullable();
             $table->timestamps();
 

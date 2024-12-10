@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     use HasFactory, HasUlids;
-
     protected $primaryKey = 'ulid';
     protected $keyType = 'string';
 

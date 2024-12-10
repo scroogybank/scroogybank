@@ -47,8 +47,8 @@ class TransactionSeeder extends Seeder
         // Create 2 collections, 4 with one ulid and 4 with another
         Transaction::factory(8)
             ->sequence(
-                ['collection_ulid' => new Ulid()],
-                ['collection_ulid' => new Ulid()],
+                ['collection_ulid' => new Ulid],
+                ['collection_ulid' => new Ulid],
             )
             ->recycle(User::factory()->create())
             ->hasLabels(fake()->numberBetween(0, 5))

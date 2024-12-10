@@ -2,14 +2,13 @@
 
 namespace App\Rules;
 
-use Arr;
 use Closure;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Contracts\Validation\ValidatorAwareRule;
 use Illuminate\Validation\Validator;
 
-class TransactionsLength implements DataAwareRule, ValidatorAwareRule, ValidationRule
+class TransactionsLength implements DataAwareRule, ValidationRule, ValidatorAwareRule
 {
     /**
      * All of the data under validation.
@@ -28,7 +27,7 @@ class TransactionsLength implements DataAwareRule, ValidatorAwareRule, Validatio
     /**
      * Run the validation rule.
      *
-     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+     * @param \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString $fail
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
@@ -48,7 +47,7 @@ class TransactionsLength implements DataAwareRule, ValidatorAwareRule, Validatio
     /**
      * Set the data under validation.
      *
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
      */
     public function setData(array $data): static
     {
