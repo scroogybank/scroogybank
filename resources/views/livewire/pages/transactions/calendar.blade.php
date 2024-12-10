@@ -48,7 +48,7 @@ $changeMonth = function (int $addMonth): void {
 
         return;
     }
-    $this->firstDayOfMonth = $this->firstDayOfMonth->addMonth($addMonth);
+    $this->firstDayOfMonth = $this->firstDayOfMonth->addMonths($addMonth);
     $this->transactions = Transaction::getCurrentMonthTransactions($this->firstDayOfMonth);
 
     // Reset computed property

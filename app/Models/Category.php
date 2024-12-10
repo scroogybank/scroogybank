@@ -3,12 +3,17 @@
 namespace App\Models;
 
 use App\Casts\ColorCast;
+use App\Enums\CategoryKind;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @use HasFactory<CategoryFactory>
+ */
 class Category extends Model
 {
     use HasFactory, HasUlids;
@@ -37,6 +42,7 @@ class Category extends Model
     protected function casts(): array
     {
         return [
+            'kind' => CategoryKind::class,
             'color' => ColorCast::class,
         ];
     }
@@ -44,7 +50,7 @@ class Category extends Model
     /**
      * A category belongs to a user.
      *
-     * @return BelongsTo
+     * @return BelongsTo<User, $this>
      */
     public function user(): BelongsTo
     {
@@ -54,27 +60,27 @@ class Category extends Model
     /**
      * A category may belong to a main category.
      *
-     * @return BelongsTo
+     * @return BelongsTo<self, $this>
      */
     public function mainCategory(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'main_category_ulid', 'ulid');
+        return $this->belongsTo(__CLASS__, 'main_category_ulid', 'ulid');
     }
 
     /**
      * A category may have many sub-categories.
      *
-     * @return HasMany
+     * @return HasMany<self, $this>
      */
     public function subCategories(): HasMany
     {
-        return $this->hasMany(Category::class, 'main_category_ulid', 'ulid');
+        return $this->hasMany(__CLASS__, 'main_category_ulid', 'ulid');
     }
 
     /**
      * A category has many transactions.
      *
-     * @return HasMany
+     * @return HasMany<Transaction, $this>
      */
     public function transactions(): HasMany
     {

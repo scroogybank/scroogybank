@@ -12,12 +12,12 @@ class Column
     ) {
     }
 
-    public static function make(string $key, string $label)
+    public static function make(string $key, string $label): static
     {
         return new static($key, $label);
     }
 
-    public function component($component)
+    public function component(string $component): static
     {
         $this->component = $component;
 

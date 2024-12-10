@@ -7,16 +7,14 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 
-use function Livewire\Volt\layout;
-use function Livewire\Volt\rules;
-use function Livewire\Volt\state;
+use function Livewire\Volt\{layout, rules, state};
 
 layout('layouts.guest');
 
 state('token')->locked();
 
 state([
-    'email' => fn () => request()->string('email')->value(),
+    'email' => fn() => request()->string('email')->value(),
     'password' => '',
     'password_confirmation' => ''
 ]);
@@ -48,7 +46,7 @@ $resetPassword = function () {
     // If the password was successfully reset, we will redirect the user back to
     // the application's home authenticated view. If there is an error we can
     // redirect them back to where they came from with their error message.
-    if ($status != Password::PASSWORD_RESET) {
+    if ($status !== Password::PASSWORD_RESET) {
         $this->addError('email', __($status));
 
         return;
@@ -65,27 +63,29 @@ $resetPassword = function () {
     <form wire:submit="resetPassword">
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-label for="email" :value="__('Email')"/>
+            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required
+                          autofocus autocomplete="username"/>
+            <x-input-error :messages="$errors->get('email')" class="mt-2"/>
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-label for="password" :value="__('Password')"/>
+            <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password" name="password"
+                          required autocomplete="new-password"/>
+            <x-input-error :messages="$errors->get('password')" class="mt-2"/>
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')"/>
 
             <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
                           type="password"
-                          name="password_confirmation" required autocomplete="new-password" />
+                          name="password_confirmation" required autocomplete="new-password"/>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
         </div>
 
         <div class="flex items-center justify-end mt-4">

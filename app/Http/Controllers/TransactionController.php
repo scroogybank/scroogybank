@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Transaction;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class TransactionController extends Controller
 {
@@ -14,9 +14,7 @@ class TransactionController extends Controller
      */
     public function index(): View
     {
-        return view('transactions.list', [
-            'transactions' => Transaction::orderBy('created_at')->paginate(100),
-        ]);
+        return view('livewire.pages.transactions.list');
     }
 
     /**

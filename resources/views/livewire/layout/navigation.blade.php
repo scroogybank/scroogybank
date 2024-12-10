@@ -15,7 +15,7 @@ $logout = function (Logout $logout) {
 
 <nav x-data="{ notificationsOpen: false, notificationsCount: 0 }"
     class="navbar sticky top-0 bg-base-100 z-10 shadow-md">
-    <!-- Menu toogle for mobile view or small screen -->
+    <!-- Menu toggle for mobile view or small screen -->
     <div class="flex-1">
         <label for="left-sidebar-drawer" class="btn btn-primary drawer-button lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -47,7 +47,7 @@ $logout = function (Logout $logout) {
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 <li class="items-center">
-                    <!-- Light and dark theme selection toogle -->
+                    <!-- Light and dark theme selection toggle -->
                     <x-theme-toggle></x-theme-toggle>
                 </li>
                 <div class="divider mt-0 mb-0"></div>

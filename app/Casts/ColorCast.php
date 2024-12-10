@@ -6,6 +6,9 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 use UnexpectedValueException;
 
+/**
+ * @implements CastsAttributes<string, string>
+ */
 class ColorCast implements CastsAttributes
 {
     /**
@@ -13,7 +16,7 @@ class ColorCast implements CastsAttributes
      *
      * @param  array<string, mixed>  $attributes
      */
-    public function get(Model $model, string $key, mixed $value, array $attributes): mixed
+    public function get(Model $model, string $key, mixed $value, array $attributes): ?string
     {
         if ($value === null) {
             return null;
@@ -31,7 +34,7 @@ class ColorCast implements CastsAttributes
      *
      * @param  array<string, mixed>  $attributes
      */
-    public function set(Model $model, string $key, mixed $value, array $attributes): mixed
+    public function set(Model $model, string $key, mixed $value, array $attributes): int|null|float
     {
         if ($value === null) {
             return null;

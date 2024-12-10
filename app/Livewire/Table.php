@@ -2,7 +2,11 @@
 
 namespace App\Livewire;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Foundation\Application;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,16 +19,16 @@ abstract class Table extends Component
     public string $sortBy = '';
     public string $sortDirection = 'asc';
 
-    public function render()
+    public function render(): Application|Factory|View
     {
         return view('livewire.table');
     }
 
-    public abstract function query(): Builder;
+    abstract public function query(): Builder;
 
-    public abstract function columns(): array;
+    abstract public function columns(): array;
 
-    public function data()
+    public function data(): LengthAwarePaginator
     {
         return $this
             ->query()
@@ -34,7 +38,7 @@ abstract class Table extends Component
             ->paginate($this->perPage);
     }
 
-    public function sort($key)
+    public function sort(string $key): void
     {
         $this->resetPage();
 

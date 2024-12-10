@@ -3,8 +3,7 @@
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Auth;
 
-use function Livewire\Volt\rules;
-use function Livewire\Volt\state;
+use function Livewire\Volt\{rules, state};
 
 state(['password' => '']);
 
@@ -48,7 +47,7 @@ $deleteUser = function (Logout $logout) {
             </p>
 
             <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only"/>
 
                 <x-text-input
                     wire:model="password"
@@ -59,7 +58,7 @@ $deleteUser = function (Logout $logout) {
                     placeholder="{{ __('Password') }}"
                 />
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                <x-input-error :messages="$errors->get('password')" class="mt-2"/>
             </div>
 
             <div class="mt-6 flex justify-end">

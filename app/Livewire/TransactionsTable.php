@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Builder;
 class TransactionsTable extends Table
 {
 
+    /**
+     * @return Builder<Transaction>
+     */
     public function query(): Builder
     {
-        return Transaction::query()->where('user_ulid', auth()->id());
+        return auth()->user()->transactions()->getQuery();
     }
 
     public function columns(): array

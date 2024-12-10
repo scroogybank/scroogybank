@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-use function Livewire\Volt\layout;
-use function Livewire\Volt\rules;
-use function Livewire\Volt\state;
+use function Livewire\Volt\{layout, rules, state};
 
 layout('layouts.guest');
 
@@ -16,7 +14,7 @@ rules(['password' => ['required', 'string']]);
 $confirmPassword = function () {
     $this->validate();
 
-    if (! Auth::guard('web')->validate([
+    if (!Auth::guard('web')->validate([
         'email' => Auth::user()->email,
         'password' => $this->password,
     ])) {
@@ -40,16 +38,16 @@ $confirmPassword = function () {
     <form wire:submit="confirmPassword">
         <!-- Password -->
         <div>
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Password')"/>
 
             <x-text-input wire:model="password"
                           id="password"
                           class="block mt-1 w-full"
                           type="password"
                           name="password"
-                          required autocomplete="current-password" />
+                          required autocomplete="current-password"/>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2"/>
         </div>
 
         <div class="flex justify-end mt-4">

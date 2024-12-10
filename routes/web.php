@@ -25,11 +25,16 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::resources([
         'accounts' => AccountController::class,
         'account_groups' => AccountGroupController::class,
-        'categories' => CategoryController::class,
         'labels' => LabelController::class,
         'stores' => StoreController::class,
         'transactions' => TransactionController::class,
     ]);
+    Volt::route('categories', 'pages.categories.list')
+        ->name('categories.index');
+    Volt::route('categories/create', 'pages.categories.show')
+        ->name('categories.create');
+    Volt::route('categories/{ulid}', 'pages.categories.show')
+        ->name('categories.show');
     Volt::route('calendar', 'pages.transactions.calendar')
         ->name('calendar');
 });
