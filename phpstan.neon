@@ -18,9 +18,6 @@ parameters:
     - '#with null as default value#'
   paths:
     - ./app
-    - ./database
-    - ./routes
-    - ./config
     - ./bootstrap/app.php
 
   # The level 8 is the highest level. original was 5

@@ -69,6 +69,11 @@
         }
     },
     "scripts": {
+        "lint": "pint --test",
+        "lint:ci": "pint --test --format=junit > test-reports/lint.xml",
+        "lint:fix": "pint",
+        "stan": "phpstan analyse --memory-limit=2G",
+        "stan:ci": "phpstan analyse --memory-limit=2G --no-ansi --error-format=junit > test-reports/stan.xml",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
