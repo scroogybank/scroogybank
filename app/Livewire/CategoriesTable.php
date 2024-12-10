@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Table\Column;
+use Auth;
 use Illuminate\Database\Eloquent\Builder;
 
 class CategoriesTable extends Table
@@ -13,7 +14,7 @@ class CategoriesTable extends Table
      */
     public function query(): Builder
     {
-        return auth()->user()->categories()->getQuery();
+        return Auth::user()->categories()->getQuery();
     }
 
     public function columns(): array

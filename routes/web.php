@@ -24,7 +24,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resources([
         'accounts' => AccountController::class,
         'account_groups' => AccountGroupController::class,
-        'labels' => LabelController::class,
         'stores' => StoreController::class,
         'transactions' => TransactionController::class,
     ]);
@@ -36,4 +35,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('categories.show');
     Volt::route('calendar', 'pages.transactions.calendar')
         ->name('calendar');
+    Volt::route('labels', 'pages.labels.list')
+        ->name('labels.index');
 });

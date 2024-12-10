@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Enums\CategoryKind;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Livewire\Form;
 
@@ -41,7 +42,7 @@ class CategoryForm extends Form
     {
         $this->validate();
 
-        return auth()->user()->categories()->create($this->all());
+        return Auth::user()->categories()->create($this->all());
     }
 
     public function update(): void

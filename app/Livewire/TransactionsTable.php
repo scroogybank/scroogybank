@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Transaction;
 use App\Table\Column;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionsTable extends Table
 {
@@ -13,7 +14,7 @@ class TransactionsTable extends Table
      */
     public function query(): Builder
     {
-        return auth()->user()->transactions()->getQuery();
+        return Auth::user()->transactions()->getQuery();
     }
 
     public function columns(): array
