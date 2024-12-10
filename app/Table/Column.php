@@ -6,7 +6,7 @@ class Column
 {
     public string $component = 'columns.column';
 
-    public function __construct(
+    final public function __construct(
         public string $key,
         public string $label
     ) {}
