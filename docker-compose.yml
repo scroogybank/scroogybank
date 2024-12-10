@@ -62,7 +62,7 @@ services:
             - selenium
         labels:
             - traefik.enable=true
-            - traefik.http.routers.laravel_test.rule=Host(`akyrey.money.dev`)
+            - traefik.http.routers.laravel_test.rule=Host(`money.development`)
             - traefik.http.routers.laravel_test.entrypoints=websecure
             - traefik.http.routers.laravel_test.tls=true
             - traefik.http.services.laravel_test.loadbalancer.server.port=80
