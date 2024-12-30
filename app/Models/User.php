@@ -10,6 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * @use HasFactory<UserFactory>
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, HasRoles, HasUlids, Notifiable;

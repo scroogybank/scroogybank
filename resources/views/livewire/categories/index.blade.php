@@ -1,11 +1,3 @@
-<?php
-
-use function Livewire\Volt\layout;
-
-layout('layouts.app');
-
-?>
-
 <x-slot name="header">
     {{ __('Categories') }}
 </x-slot>

@@ -1,27 +1,3 @@
-<?php
-
-use App\Enums\CategoryKind;
-use App\Livewire\Forms\CategoryForm;
-use App\Models\Category;
-
-use function Livewire\Volt\{form, layout, mount};
-
-form(CategoryForm::class);
-
-layout('layouts.app');
-
-mount(function (string $ulid) {
-    $this->form->setCategory(auth()->user()->categories()->where('ulid', $ulid)->firstOrFail());
-});
-
-$save = function () {
-    $category = $this->form->store();
-
-    $this->redirect(route('categories.show', ['id' => $category->id]), navigate: true);
-};
-
-?>
-
 <x-slot name="header">
     {{ __('Categories') }}
 </x-slot>
@@ -32,7 +8,7 @@ $save = function () {
             <x-input-label for="kind" :value="__('Kind')"/>
             <select wire:model="form.kind" id="kind" class="block mt-1 w-full" name="kind" required>
                 <option value="">{{ __('Please select an option') }}</option>
-                @foreach(CategoryKind::cases() as $kind)
+                @foreach($categoryKinds as $kind)
                     <option value="{{ $kind->value }}">{{ __("category.$kind->value") }}</option>
                 @endforeach
             </select>

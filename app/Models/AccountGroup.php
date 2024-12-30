@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @use HasFactory<AccountGroupFactory>
+ */
 class AccountGroup extends Model
 {
     use HasFactory, HasUlids;

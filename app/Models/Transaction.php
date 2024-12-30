@@ -16,7 +16,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
+/**
+ * @use HasFactory<TransactionFactory>
+ */
 class Transaction extends Model
 {
     use HasFactory, HasUlids;
@@ -155,7 +159,12 @@ class Transaction extends Model
      */
     public static function getCurrentMonthTransactions(CarbonImmutable $date): Collection
     {
-        return static::where('user_ulid', '=', auth()->id())
+        $user = Auth::user();
+        if (is_null($user)) {
+            return collect([]);
+        }
+
+        return static::where('user_ulid', '=', $user->ulid)
             ->whereBetween('registered_at', [$date->startOfMonth(), $date->endOfMonth()])
             ->get();
     }

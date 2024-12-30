@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @use HasFactory<SocialUserFactory>
+ */
 class SocialUser extends Model
 {
     use HasFactory;
