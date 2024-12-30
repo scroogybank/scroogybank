@@ -3,7 +3,7 @@
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-                @foreach($this->columns() as $column)
+                @foreach($columns as $column)
                     <th wire:click="sort('{{ $column->key }}')">
                         <div class="py-3 px-6 flex items-center cursor-pointer">
                             {{ $column->label }}
@@ -32,7 +32,7 @@
             <tbody>
             @foreach($this->data() as $row)
                 <tr class="bg-white border-b hover:bg-gray-50">
-                    @foreach($this->columns() as $column)
+                    @foreach($columns as $column)
                         <td>
                             <div class="py-3 px-6 flex items-center cursor-pointer">
                                 <x-dynamic-component

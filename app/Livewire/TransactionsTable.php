@@ -7,11 +7,16 @@ use App\Table\Column;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @use Table<Transaction>
+ */
 class TransactionsTable extends Table
 {
-    /**
-     * @return Builder<Transaction>
-     */
+    public function model(): Transaction
+    {
+        return app(Transaction::class);
+    }
+
     public function query(): Builder
     {
         return Auth::user()->transactions()->getQuery();

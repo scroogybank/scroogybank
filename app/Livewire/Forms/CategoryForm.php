@@ -10,7 +10,7 @@ use Livewire\Form;
 
 class CategoryForm extends Form
 {
-    public ?Category $category;
+    public ?Category $category = null;
     public string $kind = '';
     public string $name = '';
     public string $color = '';
