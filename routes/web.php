@@ -1,39 +1,27 @@
 <?php
 
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\AccountGroupController;
-use App\Http\Controllers\StoreController;
-use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
+use Inertia\Inertia;
 
-Route::redirect('/', 'dashboard');
-
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
-require __DIR__ . '/auth.php';
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resources([
-        'accounts' => AccountController::class,
-        'account_groups' => AccountGroupController::class,
-        'stores' => StoreController::class,
-        'transactions' => TransactionController::class,
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
     ]);
-    Route::get('categories', \App\Livewire\Categories\Index::class)
-        ->name('categories.index');
-    Route::get('categories/create', \App\Livewire\Categories\Create::class)
-        ->name('categories.create');
-    Route::get('categories/{category}', \App\Livewire\Categories\Edit::class)
-        ->name('categories.show');
-    Volt::route('calendar', 'pages.transactions.calendar')
-        ->name('calendar');
-    Volt::route('labels', 'pages.labels.list')
-        ->name('labels.index');
 });
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
